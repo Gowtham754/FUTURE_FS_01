@@ -6,7 +6,7 @@ export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    API.get("/profile").then(res => {
+    API.get("/api/projects").then(res => {
       setProjects(res.data?.projects || []);
     });
   }, []);
