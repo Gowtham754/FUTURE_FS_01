@@ -3,6 +3,8 @@ import API from "../api/api";
 import "../styles/about.css";
 
 function About() {
+  console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
+
   const [profile, setProfile] = useState(null);
 
   const BASE_URL = import.meta.env.VITE_API_URL;
