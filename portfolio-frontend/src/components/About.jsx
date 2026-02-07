@@ -9,8 +9,19 @@ function About() {
 
   useEffect(() => {
     API.get("/api/profile")
-      .then((res) => setProfile(res.data))
-      .catch((err) => console.error("Profile fetch error:", err));
+      .then((res) => {
+        console.log("PROFILE API RESPONSE 👉", res.data);
+
+        // Defensive assignment (handles different response shapes)
+        if (res.data.profile) {
+          setProfile(res.data.profile);
+        } else {
+          setProfile(res.data);
+        }
+      })
+      .catch((err) => {
+        console.error("Profile fetch error ❌", err);
+      });
   }, []);
 
   if (!profile) {
@@ -24,9 +35,9 @@ function About() {
           Hi, I’m <span>N. Gowtham</span>
         </h1>
 
-        <p>{profile.bio}</p>
+        <p>{profile?.bio || "Bio missing"}</p>
 
-        {profile.resume && (
+        {profile?.resume && (
           <a
             href={`${BASE_URL}${profile.resume}`}
             className="resume-btn"
@@ -39,10 +50,14 @@ function About() {
       </div>
 
       <div className="about-photo">
-        <img
-          src={`${BASE_URL}${profile.photo}`}
-          alt="Profile"
-        />
+        {profile?.photo ? (
+          <img
+            src={`${BASE_URL}${profile.photo}`}
+            alt="Profile"
+          />
+        ) : (
+          <p>Photo missing</p>
+        )}
       </div>
     </section>
   );
