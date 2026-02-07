@@ -5,11 +5,10 @@ import "../styles/about.css";
 function About() {
   const [profile, setProfile] = useState(null);
 
-  // Backend base URL from Vercel env
   const BASE_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    API.get("/profile")
+    API.get("/api/profile")
       .then((res) => setProfile(res.data))
       .catch((err) => console.error("Profile fetch error:", err));
   }, []);
