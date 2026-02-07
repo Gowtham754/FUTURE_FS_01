@@ -26,7 +26,7 @@ function About() {
 
     {profile?.resume && (
       <a
-        href={`http://localhost:5000${profile.resume}`}
+        href={`https://future-fs-backend-1d1d.onrender.com${profile.resume}`}
         className="resume-btn"
         target="_blank"
         rel="noopener noreferrer"
@@ -38,7 +38,7 @@ function About() {
 
   <div className="about-photo">
     <img
-      src={`http://localhost:5000${profile.photo}`}
+      src={`https://future-fs-backend-1d1d.onrender.com${profile.photo}`}
       alt="Profile"
     />
   </div>
