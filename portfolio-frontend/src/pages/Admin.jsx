@@ -50,17 +50,18 @@ export default function Admin() {
 
   const handleLogin = async () => {
     try {
-      const res = await API.post("/auth/login", login);
+      const res = await API.post("/api/auth/login", login);
       localStorage.setItem("token", res.data.token);
       setToken(res.data.token);
       loadProfile();
-    } catch {
+    } catch (err) {
       alert("Invalid credentials");
+       console.error("Login error:", err);
     }
   };
 
   const loadProfile = async () => {
-    const res = await API.get("/profile");
+    const res = await API.get("/api/profile");
 
     setSkills(res.data?.skills || []);
     setProjects(res.data?.projects || []);
@@ -77,7 +78,7 @@ export default function Admin() {
   /* ================= ABOUT ================= */
 
   const updateAbout = async () => {
-    await API.put("/profile", about, {
+    await API.put("/api/profile", about, {
       headers: { Authorization: token },
     });
     alert("About section updated");
@@ -87,15 +88,16 @@ export default function Admin() {
 
   const addSkill = async () => {
     if (!newSkill.trim()) return;
+
     const updated = [...skills, newSkill.trim()];
 
     const res = await API.put(
-      "/profile/skills",
+      "/api/profile/skills",
       { skills: updated },
       { headers: { Authorization: token } }
     );
 
-    setSkills(res.data);
+    setSkills(res.data.skills);
     setNewSkill("");
   };
 
@@ -103,12 +105,12 @@ export default function Admin() {
     const updated = skills.filter((s) => s !== skill);
 
     const res = await API.put(
-      "/profile/skills",
+      "/api/profile/skills",
       { skills: updated },
       { headers: { Authorization: token } }
     );
 
-    setSkills(res.data);
+    setSkills(res.data.skills);
   };
 
   /* ================= PROJECTS ================= */
@@ -118,20 +120,20 @@ export default function Admin() {
       return alert("Title & Description required");
     }
 
-    const res = await API.post("/profile/projects", project, {
+    const res = await API.post("/api/profile/projects", project, {
       headers: { Authorization: token },
     });
 
-    setProjects(res.data);
+    setProjects(res.data.projects);
     setProject({ title: "", description: "", github: "", live: "" });
   };
 
   const deleteProject = async (id) => {
-    const res = await API.delete(`/profile/projects/${id}`, {
+    const res = await API.delete(`/api/profile/projects/${id}`, {
       headers: { Authorization: token },
     });
 
-    setProjects(res.data);
+    setProjects(res.data.projects);
   };
 
   /* ================= EXPERIENCE ================= */
@@ -141,26 +143,26 @@ export default function Admin() {
       return alert("Company & Role required");
     }
 
-    const res = await API.post("/profile/experience", exp, {
+    const res = await API.post("/api/profile/experience", exp, {
       headers: { Authorization: token },
     });
 
-    setExperience(res.data);
+    setExperience(res.data.experience);
     setExp({ company: "", role: "", duration: "", description: "" });
   };
 
   const deleteExperience = async (id) => {
-    const res = await API.delete(`/profile/experience/${id}`, {
+    const res = await API.delete(`/api/profile/experience/${id}`, {
       headers: { Authorization: token },
     });
 
-    setExperience(res.data);
+    setExperience(res.data.experience);
   };
 
   /* ================= SOCIAL LINKS ================= */
 
   const updateSocials = async () => {
-    await API.put("/profile/socials", socials, {
+    await API.put("/api/profile/socials", socials, {
       headers: { Authorization: token },
     });
     alert("Social links updated");
@@ -172,7 +174,7 @@ export default function Admin() {
     const fd = new FormData();
     fd.append("resume", resume);
 
-    await API.post("/resume", fd, {
+    await API.post("/api/resume", fd, {
       headers: { Authorization: token },
     });
 
@@ -183,7 +185,7 @@ export default function Admin() {
     const fd = new FormData();
     fd.append("photo", photo);
 
-    await API.post("/photo", fd, {
+    await API.post("/api/photo", fd, {
       headers: { Authorization: token },
     });
 
@@ -227,7 +229,7 @@ export default function Admin() {
         <h2>Admin Dashboard</h2>
 
         {/* ABOUT */}
-        <h3>About Section</h3>
+        <h3>About</h3>
         <input
           placeholder="Name"
           value={about.name}
@@ -268,7 +270,9 @@ export default function Admin() {
           placeholder="New skill"
           onChange={(e) => setNewSkill(e.target.value)}
         />
-        <button className="admin-btn" onClick={addSkill}>Add</button>
+        <button className="admin-btn" onClick={addSkill}>
+          Add Skill
+        </button>
 
         <ul className="admin-list">
           {skills.map((s) => (
@@ -286,15 +290,37 @@ export default function Admin() {
 
         {/* PROJECTS */}
         <h3>Projects</h3>
-        <input placeholder="Title" value={project.title}
-          onChange={(e) => setProject({ ...project, title: e.target.value })} />
-        <textarea placeholder="Description" value={project.description}
-          onChange={(e) => setProject({ ...project, description: e.target.value })} />
-        <input placeholder="GitHub URL" value={project.github}
-          onChange={(e) => setProject({ ...project, github: e.target.value })} />
-        <input placeholder="Live URL" value={project.live}
-          onChange={(e) => setProject({ ...project, live: e.target.value })} />
-        <button className="admin-btn" onClick={addProject}>Add Project</button>
+        <input
+          placeholder="Title"
+          value={project.title}
+          onChange={(e) =>
+            setProject({ ...project, title: e.target.value })
+          }
+        />
+        <textarea
+          placeholder="Description"
+          value={project.description}
+          onChange={(e) =>
+            setProject({ ...project, description: e.target.value })
+          }
+        />
+        <input
+          placeholder="GitHub URL"
+          value={project.github}
+          onChange={(e) =>
+            setProject({ ...project, github: e.target.value })
+          }
+        />
+        <input
+          placeholder="Live URL"
+          value={project.live}
+          onChange={(e) =>
+            setProject({ ...project, live: e.target.value })
+          }
+        />
+        <button className="admin-btn" onClick={addProject}>
+          Add Project
+        </button>
 
         <ul className="admin-list">
           {projects.map((p) => (
@@ -312,14 +338,34 @@ export default function Admin() {
 
         {/* EXPERIENCE */}
         <h3>Experience</h3>
-        <input placeholder="Company" value={exp.company}
-          onChange={(e) => setExp({ ...exp, company: e.target.value })} />
-        <input placeholder="Role" value={exp.role}
-          onChange={(e) => setExp({ ...exp, role: e.target.value })} />
-        <input placeholder="Duration" value={exp.duration}
-          onChange={(e) => setExp({ ...exp, duration: e.target.value })} />
-        <textarea placeholder="Description" value={exp.description}
-          onChange={(e) => setExp({ ...exp, description: e.target.value })} />
+        <input
+          placeholder="Company"
+          value={exp.company}
+          onChange={(e) =>
+            setExp({ ...exp, company: e.target.value })
+          }
+        />
+        <input
+          placeholder="Role"
+          value={exp.role}
+          onChange={(e) =>
+            setExp({ ...exp, role: e.target.value })
+          }
+        />
+        <input
+          placeholder="Duration"
+          value={exp.duration}
+          onChange={(e) =>
+            setExp({ ...exp, duration: e.target.value })
+          }
+        />
+        <textarea
+          placeholder="Description"
+          value={exp.description}
+          onChange={(e) =>
+            setExp({ ...exp, description: e.target.value })
+          }
+        />
         <button className="admin-btn" onClick={addExperience}>
           Add Experience
         </button>
@@ -338,14 +384,29 @@ export default function Admin() {
           ))}
         </ul>
 
-        {/* CONNECT */}
-        <h3>Connect (Social Links)</h3>
-        <input placeholder="LinkedIn URL" value={socials.linkedin}
-          onChange={(e) => setSocials({ ...socials, linkedin: e.target.value })} />
-        <input placeholder="GitHub URL" value={socials.github}
-          onChange={(e) => setSocials({ ...socials, github: e.target.value })} />
-        <input placeholder="Email" value={socials.email}
-          onChange={(e) => setSocials({ ...socials, email: e.target.value })} />
+        {/* SOCIALS */}
+        <h3>Social Links</h3>
+        <input
+          placeholder="LinkedIn URL"
+          value={socials.linkedin}
+          onChange={(e) =>
+            setSocials({ ...socials, linkedin: e.target.value })
+          }
+        />
+        <input
+          placeholder="GitHub URL"
+          value={socials.github}
+          onChange={(e) =>
+            setSocials({ ...socials, github: e.target.value })
+          }
+        />
+        <input
+          placeholder="Email"
+          value={socials.email}
+          onChange={(e) =>
+            setSocials({ ...socials, email: e.target.value })
+          }
+        />
         <button className="admin-btn" onClick={updateSocials}>
           Save Social Links
         </button>
