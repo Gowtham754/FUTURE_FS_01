@@ -6,10 +6,10 @@ export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    API.get("/api/projects")
+    API.get("/api/profile")
       .then(res => {
-        console.log("PROJECTS API RESPONSE 👉", res.data);
-        setProjects(res.data);
+        const data = res.data.profile ?? res.data;
+        setProjects(data.projects || []);
       })
       .catch(err => {
         console.error("Projects fetch error:", err);
