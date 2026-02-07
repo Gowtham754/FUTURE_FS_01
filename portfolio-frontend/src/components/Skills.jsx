@@ -6,7 +6,7 @@ export default function Skills() {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    API.get("/profile")
+    API.get("/api/profile")
       .then(res => setSkills(res.data?.skills || []))
       .catch(() => setSkills([]));
   }, []);

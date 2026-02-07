@@ -6,7 +6,7 @@ export default function Connect() {
   const [socials, setSocials] = useState(null);
 
   useEffect(() => {
-    API.get("/profile")
+    API.get("/api/profile")
       .then((res) => setSocials(res.data?.socials))
       .catch(() => setSocials(null));
   }, []);

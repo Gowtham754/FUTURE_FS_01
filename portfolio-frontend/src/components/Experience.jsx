@@ -6,7 +6,7 @@ export default function Experience() {
   const [experience, setExperience] = useState([]);
 
   useEffect(() => {
-    API.get("/profile")
+    API.get("/api/profile")
       .then(res => setExperience(res.data?.experience || []))
       .catch(() => setExperience([]));
   }, []);
