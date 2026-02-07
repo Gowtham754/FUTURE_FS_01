@@ -1,0 +1,127 @@
+.projects-section {
+  padding: 80px 10%;
+}
+
+.section-title {
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #8aa9d6;
+  margin-bottom: 30px;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.project-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 30px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 25px 60px rgba(0, 80, 200, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+.project-info h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #0b1d3a;
+}
+
+.project-info p {
+  color: #5c6f91;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.project-actions {
+  display: flex;
+  gap: 16px;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* GITHUB BUTTON (UNCHANGED) */
+.btn.github {
+  border: 2px solid #cbd7f0;
+  color: #0b1d3a;
+  background: #ffffff;
+}
+
+.btn.github:hover {
+  background: #e9f0ff;
+}
+
+/* ===============================
+   VISIT / LIVE BUTTON (UPDATED)
+================================ */
+
+.btn.live {
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  color: #ffffff;
+  border: none;
+
+  box-shadow:
+    0 8px 25px rgba(37, 99, 235, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+.btn.live:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 16px 45px rgba(37, 99, 235, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+/* ===============================
+   PROJECTS MOBILE
+================================ */
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 80px 20px;
+  }
+
+  .project-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .project-info p {
+    max-width: 100%;
+  }
+
+  .project-actions {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+  }
+
+  .btn {
+    flex: 1;
+    text-align: center;
+  }
+}

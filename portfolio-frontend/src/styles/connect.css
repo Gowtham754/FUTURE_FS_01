@@ -1,0 +1,198 @@
+.connect-section {
+  padding: 120px 0;
+  background: transparent;
+}
+
+/* FORCE SAME LEFT ALIGNMENT AS EXPERIENCE */
+.connect-section .section-container {
+  max-width: 1100px;
+  margin-left: calc((90vw - 1100px) / 2);
+  margin-right: auto;
+  padding-left: 24px;
+}
+
+
+/* ===============================
+   GRID – SAME WIDTH AS EXPERIENCE
+================================ */
+
+.connect-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+
+/* ===============================
+   CARD (REDUCED SIZE)
+================================ */
+
+.connect-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 22px 24px;   /* ⬅ reduced */
+  border-radius: 16px;
+
+  background: #ffffff;
+  text-decoration: none;
+
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.connect-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.14);
+}
+
+/* ===============================
+   ICON
+================================ */
+
+.icon-box {
+  width: 40px;      /* ⬅ smaller */
+  height: 40px;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+  color: white;
+}
+
+.icon-box.linkedin {
+  background: linear-gradient(135deg, #0a66c2, #38bdf8);
+}
+
+.icon-box.github {
+  background: linear-gradient(135deg, #111827, #4b5563);
+}
+
+.icon-box.email {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+}
+
+/* ===============================
+   TEXT
+================================ */
+
+.connect-info h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.connect-info p {
+  margin: 2px 0 6px;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.connect-info span {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #f59e0b;
+}
+
+/* ===============================
+   RESPONSIVE (MOBILE)
+================================ */
+
+@media (max-width: 900px) {
+  .connect-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .connect-grid {
+    grid-template-columns: 1fr;
+  }
+
+ .connect-card {
+  padding: 20px 22px;
+  border-radius: 16px;
+}
+
+}
+/* ===============================
+   FOOTER
+================================ */
+
+.site-footer {
+  text-align: center;
+  padding: 40px 20px 30px;
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
+}
+/* ===============================
+   CONNECT MOBILE
+================================ */
+@media (max-width: 768px) {
+  .connect-section {
+    padding: 80px 20px;
+  }
+
+  .connect-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .connect-card {
+    padding: 20px;
+  }
+
+  .connect-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .connect-info p {
+    font-size: 0.9rem;
+  }
+}
+/* ===============================
+   FOOTER MOBILE
+================================ */
+@media (max-width: 768px) {
+  .site-footer {
+    font-size: 0.85rem;
+    padding: 24px 12px;
+    text-align: center;
+  }
+}
+/* ===============================
+   CONNECT – HARD MOBILE RESET
+   (THIS FIXES THE ISSUE)
+================================ */
+@media (max-width: 768px) {
+
+  /* 🔥 RESET THE FORCED LEFT OFFSET */
+  .connect-section .section-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    width: 100%;
+  }
+
+  .connect-section {
+    padding: 80px 20px;
+  }
+
+  .connect-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .connect-card {
+    width: 100%;
+    padding: 18px 20px;
+  }
+}

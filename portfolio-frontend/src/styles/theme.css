@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+:root {
+  --primary: #6c63ff;
+  --secondary: #8b5cf6;
+  --text-dark: #111827;
+  --text-light: #6b7280;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --border: rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background:
+    radial-gradient(circle at 80% 20%, #e0e7ff, transparent 40%),
+    radial-gradient(circle at 20% 80%, #ede9fe, transparent 40%),
+    var(--bg);
+  color: var(--text-dark);
+}
+
+/* SECTION */
+.section {
+  padding: 120px 8%;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+/* CARD */
+.section-card {
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+}
+
+/* GRID */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+/* INDIVIDUAL CARD */
+.glass-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.35s ease;
+  border: 1px solid var(--border);
+}
+
+.glass-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(99,102,241,0.25);
+}

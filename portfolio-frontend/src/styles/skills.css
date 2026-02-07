@@ -1,0 +1,88 @@
+/* ===============================
+   SKILLS SECTION
+================================ */
+
+.skills-section {
+  padding: 120px 80px;
+  background: transparent; /* blends with other sections */
+  position: relative;
+  z-index: 1;
+}
+
+/* ===============================
+   SECTION HEADER (PROJECT STYLE)
+================================ */
+
+.section-header {
+  margin-bottom: 60px;
+  text-align: left;
+}
+
+
+.section-header span {
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.section-underline {
+  width: 42px;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #22d3ee);
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+/* ===============================
+   SKILLS GRID
+================================ */
+
+.skills-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 26px;
+}
+
+
+/* ===============================
+   SKILL CARD
+================================ */
+
+.skill-card {
+  padding: 18px 36px;
+  border-radius: 999px;
+
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  color: #ffffff;
+
+  box-shadow: 0 14px 40px rgba(99, 102, 241, 0.35);
+
+  cursor: default;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+/* ===============================
+   HOVER EFFECT
+================================ */
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.05);
+
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+
+  box-shadow: 0 26px 70px rgba(56, 189, 248, 0.55);
+}
