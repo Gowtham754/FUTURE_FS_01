@@ -6,9 +6,14 @@ export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    API.get("/api/projects").then(res => {
-      setProjects(res.data?.projects || []);
-    });
+    API.get("/api/projects")
+      .then(res => {
+        console.log("PROJECTS API RESPONSE 👉", res.data);
+        setProjects(res.data);
+      })
+      .catch(err => {
+        console.error("Projects fetch error:", err);
+      });
   }, []);
 
   return (
