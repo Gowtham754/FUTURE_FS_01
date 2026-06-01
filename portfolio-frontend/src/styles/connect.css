@@ -3,17 +3,16 @@
   background: transparent;
 }
 
-/* FORCE SAME LEFT ALIGNMENT AS EXPERIENCE */
+/* Align container dynamically */
 .connect-section .section-container {
   max-width: 1100px;
-  margin-left: calc((90vw - 1100px) / 2);
+  margin-left: calc((100vw - 1100px) / 2);
   margin-right: auto;
   padding-left: 24px;
 }
 
-
 /* ===============================
-   GRID – SAME WIDTH AS EXPERIENCE
+   GRID
 ================================ */
 
 .connect-grid {
@@ -23,9 +22,8 @@
   margin-top: 48px;
 }
 
-
 /* ===============================
-   CARD (REDUCED SIZE)
+   CARD
 ================================ */
 
 .connect-card {
@@ -33,19 +31,28 @@
   align-items: center;
   gap: 18px;
 
-  padding: 22px 24px;   /* ⬅ reduced */
-  border-radius: 16px;
+  padding: 24px;
+  border-radius: 18px;
 
-  background: #ffffff;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
   text-decoration: none;
 
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .connect-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.14);
+  transform: translateY(-6px);
+  border-color: rgba(255, 106, 0, 0.45);
+  box-shadow: 
+    0 15px 30px rgba(255, 106, 0, 0.15),
+    var(--shadow-card);
 }
 
 /* ===============================
@@ -53,28 +60,30 @@
 ================================ */
 
 .icon-box {
-  width: 40px;      /* ⬅ smaller */
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 20px;
+  font-size: 22px;
   color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .icon-box.linkedin {
-  background: linear-gradient(135deg, #0a66c2, #38bdf8);
+  background: linear-gradient(135deg, #0a66c2, #0077b5);
 }
 
 .icon-box.github {
-  background: linear-gradient(135deg, #111827, #4b5563);
+  background: linear-gradient(135deg, #24292e, #4f5d75);
 }
 
 .icon-box.email {
-  background: linear-gradient(135deg, #f59e0b, #f97316);
+  background: var(--gradient-orange);
+  box-shadow: 0 4px 15px rgba(255, 106, 0, 0.35);
 }
 
 /* ===============================
@@ -83,27 +92,52 @@
 
 .connect-info h3 {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text-main);
+  font-family: var(--font-title);
 }
 
 .connect-info p {
-  margin: 2px 0 6px;
-  font-size: 0.9rem;
-  color: #64748b;
+  margin: 4px 0 8px;
+  font-size: 0.95rem;
+  color: var(--text-sub);
 }
 
 .connect-info span {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 1px;
-  color: #f59e0b;
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(255, 106, 0, 0.2);
+}
+
+/* ===============================
+   FOOTER
+================================ */
+
+.site-footer {
+  text-align: center;
+  padding: 50px 20px 40px;
+  font-size: 0.95rem;
+  color: var(--text-sub);
+  font-weight: 500;
+  border-top: 1px solid var(--border-glass);
+  background: rgba(5, 5, 8, 0.2);
+  margin-top: 40px;
 }
 
 /* ===============================
    RESPONSIVE (MOBILE)
 ================================ */
+
+@media (max-width: 1024px) {
+  .connect-section .section-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px;
+  }
+}
 
 @media (max-width: 900px) {
   .connect-grid {
@@ -111,88 +145,31 @@
   }
 }
 
-@media (max-width: 600px) {
-  .connect-grid {
-    grid-template-columns: 1fr;
-  }
-
- .connect-card {
-  padding: 20px 22px;
-  border-radius: 16px;
-}
-
-}
-/* ===============================
-   FOOTER
-================================ */
-
-.site-footer {
-  text-align: center;
-  padding: 40px 20px 30px;
-  font-size: 0.9rem;
-  color: #64748b;
-  font-weight: 500;
-}
-/* ===============================
-   CONNECT MOBILE
-================================ */
 @media (max-width: 768px) {
-  .connect-section {
-    padding: 80px 20px;
-  }
-
-  .connect-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .connect-card {
-    padding: 20px;
-  }
-
-  .connect-info h3 {
-    font-size: 1.1rem;
-  }
-
-  .connect-info p {
-    font-size: 0.9rem;
-  }
-}
-/* ===============================
-   FOOTER MOBILE
-================================ */
-@media (max-width: 768px) {
-  .site-footer {
-    font-size: 0.85rem;
-    padding: 24px 12px;
-    text-align: center;
-  }
-}
-/* ===============================
-   CONNECT – HARD MOBILE RESET
-   (THIS FIXES THE ISSUE)
-================================ */
-@media (max-width: 768px) {
-
-  /* 🔥 RESET THE FORCED LEFT OFFSET */
   .connect-section .section-container {
     margin-left: auto !important;
     margin-right: auto !important;
-    padding-left: 0 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
     width: 100%;
   }
 
   .connect-section {
-    padding: 80px 20px;
+    padding: 80px 0;
   }
 
   .connect-grid {
     grid-template-columns: 1fr !important;
-    gap: 16px;
+    gap: 20px;
   }
 
   .connect-card {
     width: 100%;
-    padding: 18px 20px;
+    padding: 20px;
+  }
+
+  .site-footer {
+    font-size: 0.85rem;
+    padding: 30px 15px;
   }
 }

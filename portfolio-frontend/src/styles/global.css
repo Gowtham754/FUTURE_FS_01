@@ -1,66 +1,78 @@
-* {
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap');
+
+:root {
+  --primary: #ff6a00;
+  --primary-rgb: 255, 106, 0;
+  --secondary: #ff3c00;
+  --secondary-rgb: 255, 60, 0;
+  
+  --bg-dark: #050508;
+  --bg-card: rgba(15, 15, 22, 0.7);
+  --border-glass: rgba(255, 106, 0, 0.15);
+  
+  --shadow-primary: 0 15px 40px rgba(255, 106, 0, 0.3);
+  --shadow-card: 0 30px 60px rgba(0, 0, 0, 0.5);
+
+  --text-main: #f8fafc;
+  --text-sub: #94a3b8;
+  
+  --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-title: 'Syne', 'Outfit', sans-serif;
+  
+  --gradient-orange: linear-gradient(135deg, #ff8c00 0%, #ff4500 100%);
+  --gradient-orange-hover: linear-gradient(135deg, #ff9f1c 0%, #ff5722 100%);
 }
 
-html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
-  color: #e5e7eb;
-  background: radial-gradient(
-      circle at 20% 20%,
-      rgba(56, 189, 248, 0.15),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 80% 30%,
-      rgba(14, 165, 233, 0.12),
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 50% 80%,
-      rgba(99, 102, 241, 0.12),
-      transparent 45%
-    ),
-    linear-gradient(180deg, #020617, #020617);
-  background-attachment: fixed;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  background-attachment: fixed;
 }
 
 section {
   padding: 120px 10%;
   position: relative;
-}
-/* ===== GLOBAL RESET ===== */
-* {
-  box-sizing: border-box;
+  z-index: 2;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-  font-family: "Inter", system-ui, sans-serif;
+h1, h2, h3, h4 {
+  font-family: var(--font-title);
+  color: var(--text-main);
 }
 
-/* ===== GLOBAL PAGE BACKGROUND ===== */
-body {
-  background:
-    radial-gradient(circle at 20% 20%, rgba(139,92,246,0.25), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(99,102,241,0.25), transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(56,189,248,0.2), transparent 45%),
-    linear-gradient(135deg, #f8fafc, #eef2ff);
+p {
+  color: var(--text-sub);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
 
-  color: #0f172a;
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 106, 0, 0.3);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 106, 0, 0.6);
 }

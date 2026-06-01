@@ -3,7 +3,7 @@
 ================================ */
 
 .experience-section {
-  padding: 120px 80px;
+  padding: 120px 10%;
   background: transparent;
   position: relative;
   z-index: 1;
@@ -30,22 +30,40 @@
 ================================ */
 
 .experience-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
   border-radius: 20px;
-  padding: 32px;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
-
-  transition: 
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-
+  padding: 36px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .experience-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 30px 80px rgba(56, 189, 248, 0.25);
+  transform: translateY(-8px);
+  border-color: rgba(255, 106, 0, 0.4);
+  box-shadow: 
+    0 15px 30px rgba(255, 106, 0, 0.15),
+    var(--shadow-card);
+}
+
+/* Add a glowing orange side accent line on cards */
+.experience-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient-orange);
+  opacity: 0.8;
 }
 
 /* ===============================
@@ -53,45 +71,52 @@
 ================================ */
 
 .experience-card h3 {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: #0f172a;
-  margin-bottom: 6px;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  font-family: var(--font-title);
+  letter-spacing: -0.01em;
 }
 
 .experience-card h4 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: #2563eb;
-  margin-bottom: 14px;
+  color: var(--primary);
+  margin-bottom: 16px;
+  text-shadow: 0 0 10px rgba(255, 106, 0, 0.2);
 }
 
 .experience-card p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.7;
-  color: #475569;
+  color: var(--text-sub);
 }
 
 .exp-duration {
   display: inline-block;
-  margin-top: 18px;
-  font-size: 0.85rem;
+  margin-top: 20px;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: #64748b;
+  color: var(--text-sub);
+  opacity: 0.85;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
+
 /* ===============================
    EXPERIENCE MOBILE
 ================================ */
 @media (max-width: 768px) {
   .experience-section {
-    padding: 80px 20px;
+    padding: 100px 24px;
   }
 
   .experience-card {
-    padding: 24px;
+    padding: 28px;
   }
 
   .experience-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
 }

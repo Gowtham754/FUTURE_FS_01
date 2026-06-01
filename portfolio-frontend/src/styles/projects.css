@@ -1,13 +1,20 @@
+/* ===============================
+   PROJECTS SECTION
+================================ */
+
 .projects-section {
-  padding: 80px 10%;
+  padding: 120px 10%;
+  background: transparent;
 }
 
 .section-title {
-  font-size: 14px;
+  font-size: 0.9rem;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: #8aa9d6;
-  margin-bottom: 30px;
+  color: var(--primary);
+  margin-bottom: 40px;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(255, 106, 0, 0.3);
 }
 
 .projects-list {
@@ -17,30 +24,43 @@
 }
 
 .project-card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 30px 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  padding: 35px 45px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 25px 60px rgba(0, 80, 200, 0.15);
-  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
+  border-color: rgba(255, 106, 0, 0.4);
+  box-shadow: 
+    0 15px 35px rgba(255, 106, 0, 0.15),
+    0 30px 60px rgba(0, 0, 0, 0.6);
 }
 
 .project-info h3 {
-  font-size: 22px;
-  margin-bottom: 8px;
-  color: #0b1d3a;
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: var(--text-main);
+  font-family: var(--font-title);
+  letter-spacing: -0.01em;
 }
 
 .project-info p {
-  color: #5c6f91;
-  max-width: 600px;
-  line-height: 1.6;
+  color: var(--text-sub);
+  max-width: 650px;
+  line-height: 1.7;
+  font-size: 1.05rem;
 }
 
 .project-actions {
@@ -56,58 +76,55 @@
   padding: 14px 28px;
   border-radius: 12px;
   font-weight: 600;
+  font-size: 1rem;
   text-decoration: none;
-  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s ease;
 }
 
-/* GITHUB BUTTON (UNCHANGED) */
+/* GITHUB BUTTON */
 .btn.github {
-  border: 2px solid #cbd7f0;
-  color: #0b1d3a;
-  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .btn.github:hover {
-  background: #e9f0ff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 106, 0, 0.5);
+  color: #ffffff;
+  box-shadow: 0 5px 15px rgba(255, 106, 0, 0.1);
 }
 
-/* ===============================
-   VISIT / LIVE BUTTON (UPDATED)
-================================ */
-
+/* VISIT / LIVE BUTTON */
 .btn.live {
-  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  background: var(--gradient-orange);
   color: #ffffff;
-  border: none;
-
-  box-shadow:
-    0 8px 25px rgba(37, 99, 235, 0.35),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    filter 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 20px rgba(255, 106, 0, 0.25);
 }
 
 .btn.live:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow:
-    0 16px 45px rgba(37, 99, 235, 0.55),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  background: var(--gradient-orange-hover);
+  box-shadow: 0 12px 30px rgba(255, 106, 0, 0.45);
 }
+
 /* ===============================
    PROJECTS MOBILE
 ================================ */
 @media (max-width: 768px) {
   .projects-section {
-    padding: 80px 20px;
+    padding: 100px 24px;
   }
 
   .project-card {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 24px;
+    padding: 30px;
   }
 
   .project-info p {
@@ -123,5 +140,6 @@
   .btn {
     flex: 1;
     text-align: center;
+    font-size: 0.9rem;
   }
 }
