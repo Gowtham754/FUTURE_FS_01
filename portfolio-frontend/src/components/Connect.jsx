@@ -16,7 +16,7 @@ export default function Connect() {
   return (
     <>
       <section className="connect-section" id="connect">
-        <div className="section-container">
+        <div className="connect-container">
           {/* HEADER */}
           <div className="section-header">
             <span>CONNECT / GET IN TOUCH</span>

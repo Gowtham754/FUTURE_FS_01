@@ -18,9 +18,15 @@ export default function Projects() {
 
   return (
     <section className="projects-section" id="projects">
-      <h2 className="section-title">Projects / Work</h2>
+      <div className="projects-container">
+        
+        {/* SECTION HEADER (Unified) */}
+        <div className="section-header">
+          <span>Projects / Work</span>
+          <div className="section-underline"></div>
+        </div>
 
-      <div className="projects-list">
+        <div className="projects-list">
         {projects.length === 0 && (
           <p className="empty-text">No projects added yet.</p>
         )}
@@ -58,6 +64,7 @@ export default function Projects() {
           </div>
         ))}
       </div>
+    </div>
     </section>
   );
 }

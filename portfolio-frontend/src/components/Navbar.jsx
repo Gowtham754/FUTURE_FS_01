@@ -1,10 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import "../styles/navbar.css";
 
-const sections = ["about", "skills", "projects", "experience", "connect"];
-
-export default function Navbar() {
+export default function Navbar({ profile }) {
   const [active, setActive] = useState("about");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+
+  const sections = useMemo(() => {
+    const list = ["about", "skills", "projects", "experience"];
+    if (profile?.leetcodeSettings?.enabled) {
+      list.push("leetcode");
+    }
+    if (profile?.githubSettings?.enabled) {
+      list.push("github");
+    }
+    list.push("connect");
+    return list;
+  }, [profile]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +35,20 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [sections]);
+
+  useEffect(() => {
+    if (theme === "light") {
+      document.body.classList.add("light-mode");
+    } else {
+      document.body.classList.remove("light-mode");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <nav className="navbar">
@@ -41,6 +65,11 @@ export default function Navbar() {
             </a>
           </li>
         ))}
+        <li>
+          <button className="theme-toggle-btn" onClick={toggleTheme} aria-label="Toggle Theme">
+            {theme === "dark" ? "☀️" : "🌙"}
+          </button>
+        </li>
       </ul>
     </nav>
   );

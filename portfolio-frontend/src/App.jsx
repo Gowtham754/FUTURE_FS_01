@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import API from "./api/api";
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -6,6 +8,17 @@ import Admin from "./pages/Admin";
 import Background3D from "./components/Background3D";
 
 export default function App() {
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    API.get("/api/profile")
+      .then((res) => {
+        const data = res.data.profile || res.data;
+        setProfile(data);
+      })
+      .catch((err) => console.error("Error fetching profile in App:", err));
+  }, []);
+
   return (
     <BrowserRouter>
       <Background3D />
@@ -15,8 +28,8 @@ export default function App() {
           path="/"
           element={
             <>
-              <Navbar />
-              <Home />
+              <Navbar profile={profile} />
+              <Home profile={profile} />
             </>
           }
         />

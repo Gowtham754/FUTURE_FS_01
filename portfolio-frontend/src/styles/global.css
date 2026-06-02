@@ -23,6 +23,20 @@
   --gradient-orange-hover: linear-gradient(135deg, #ff9f1c 0%, #ff5722 100%);
 }
 
+body.light-mode {
+  --bg-dark: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --border-glass: rgba(255, 106, 0, 0.15);
+  --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.08);
+  --text-main: #0f172a;
+  --text-sub: #475569;
+}
+
+body.light-mode .navbar {
+  background: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 106, 0, 0.12);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

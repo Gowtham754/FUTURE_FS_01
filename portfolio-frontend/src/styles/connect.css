@@ -1,14 +1,12 @@
 .connect-section {
-  padding: 120px 0;
+  padding: 120px 10%;
   background: transparent;
 }
 
-/* Align container dynamically */
-.connect-section .section-container {
-  max-width: 1100px;
-  margin-left: calc((100vw - 1100px) / 2);
-  margin-right: auto;
-  padding-left: 24px;
+.connect-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* ===============================
@@ -129,13 +127,11 @@
 
 /* ===============================
    RESPONSIVE (MOBILE)
-================================ */
+ ================================ */
 
 @media (max-width: 1024px) {
-  .connect-section .section-container {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 40px;
+  .connect-container {
+    width: 100%;
   }
 }
 
@@ -146,16 +142,8 @@
 }
 
 @media (max-width: 768px) {
-  .connect-section .section-container {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    width: 100%;
-  }
-
   .connect-section {
-    padding: 80px 0;
+    padding: 100px 24px;
   }
 
   .connect-grid {

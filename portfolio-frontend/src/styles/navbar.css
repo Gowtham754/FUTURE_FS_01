@@ -142,3 +142,24 @@
     font-size: 0.8rem;
   }
 }
+
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  color: var(--text-main);
+  outline: none;
+  margin-top: -3px;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.15) rotate(15deg);
+  background-color: rgba(255, 106, 0, 0.1);
+}

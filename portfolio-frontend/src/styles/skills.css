@@ -92,3 +92,9 @@
   border-color: rgba(255, 106, 0, 0.5);
   box-shadow: 0 15px 35px rgba(255, 106, 0, 0.45);
 }
+
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 100px 24px;
+  }
+}
