@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+portfolio-backend/.env
+portfolio-frontend/.env
+
+# Build files
+dist/
+build/
+
+# Editor/OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

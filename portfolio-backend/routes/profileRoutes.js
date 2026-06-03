@@ -315,7 +315,7 @@ router.get("/github", async (req, res) => {
 
     // Cache stale/missing: fetch fresh
     try {
-      const freshData = await fetchGithubData(username, process.env.GITHUB_TOKEN);
+      const freshData = await fetchGithubData(username, process.env.GITHUB_TOKEN || process.env["github-token"]);
       profile.githubCache = freshData;
       profile.githubLastFetched = now;
       await profile.save();
@@ -362,7 +362,7 @@ router.post("/github/refresh", auth, async (req, res) => {
     if (!profile) return res.status(404).json({ message: "Profile not found" });
 
     const username = profile.githubUsername || "Gowtham754";
-    const freshData = await fetchGithubData(username, process.env.GITHUB_TOKEN);
+    const freshData = await fetchGithubData(username, process.env.GITHUB_TOKEN || process.env["github-token"]);
     
     profile.githubCache = freshData;
     profile.githubLastFetched = new Date();
