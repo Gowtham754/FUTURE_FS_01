@@ -370,7 +370,7 @@ router.post("/github/refresh", auth, async (req, res) => {
     
     res.json({ message: "GitHub cache refreshed successfully", data: freshData });
   } catch (err) {
-    res.status(500).json({ message: "Refresh failed", error: err.message });
+    res.status(500).json({ message: `Refresh failed: ${err.message}`, error: err.message });
   }
 });
 

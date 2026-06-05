@@ -257,7 +257,8 @@ export default function Admin() {
       alert(res.data?.message || `${platform} data updated!`);
     } catch (err) {
       console.error(err);
-      alert(`Manual refresh failed: ${err.response?.data?.message || err.message}`);
+      const detailedError = err.response?.data?.message || err.response?.data?.error || err.message;
+      alert(`Manual refresh failed: ${detailedError}`);
     }
   };
 

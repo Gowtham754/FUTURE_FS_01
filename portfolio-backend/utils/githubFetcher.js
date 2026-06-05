@@ -109,7 +109,21 @@ async function fetchGithubData(username, token = null) {
   const profileUrl = `https://api.github.com/users/${username}`;
   const profileRes = await fetch(profileUrl, { headers });
   if (!profileRes.ok) {
-    throw new Error(`GitHub user "${username}" not found.`);
+    let errMsg = profileRes.statusText;
+    try {
+      const errorData = await profileRes.json();
+      errMsg = errorData.message || errMsg;
+    } catch (_) {}
+    
+    if (profileRes.status === 401) {
+      throw new Error(`GitHub API: Unauthorized (invalid token). Details: ${errMsg}`);
+    } else if (profileRes.status === 403) {
+      throw new Error(`GitHub API: Rate limit exceeded or blocked. Details: ${errMsg}`);
+    } else if (profileRes.status === 404) {
+      throw new Error(`GitHub user "${username}" not found.`);
+    } else {
+      throw new Error(`GitHub API returned status ${profileRes.status}: ${errMsg}`);
+    }
   }
   const profileData = await profileRes.json();
 
